@@ -1,0 +1,21 @@
+<div class="form-control" (keyup.enter)="closeDialog()">
+    <h2>Intervalle de dates</h2>
+    <h4>Sélectionner un intervalle de dates à l'aide de l'icône de calendrier</h4>
+
+    <mat-form-field>
+        <mat-label class="smallText">MM/DD/YYYY – MM/DD/YYYY</mat-label>
+
+        <mat-date-range-input [rangePicker]="picker">
+            <input matStartDate placeholder="Date de début" [(ngModel)]="startDate" />
+            <input matEndDate placeholder="Date de fin" [(ngModel)]="endDate" />
+        </mat-date-range-input>
+
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+    </mat-form-field>
+
+    <div class="mb-2">
+        <button class="btn btn-danger me-2" (click)="closeDialog()">Annuler</button>
+        <button class="btn btn-success" (click)="applySelection()">Filtrer</button>
+    </div>
+</div>

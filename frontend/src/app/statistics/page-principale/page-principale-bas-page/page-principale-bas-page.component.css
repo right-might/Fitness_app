@@ -1,0 +1,44 @@
+.nav-bas-page {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(66, 126, 204);
+  padding: 1%;
+  width: 100%;
+  bottom: 0;
+}
+
+.bottom-page-element {
+  display: block;
+  flex: 1;
+  border: 1%;
+  text-align: center;
+  border-right: 2px solid white;
+}
+
+.bottom-page-element:last-child {
+  border-right: none;
+}
+
+.bottom-page-link {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.material-symbols-outlined {
+  font-size: 40px;
+  color: white;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  background-color: rgb(30, 126, 204);
+}

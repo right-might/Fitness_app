@@ -1,0 +1,18 @@
+<h1 class="text-center m-8">Liste d'utilisateurs et clients du système</h1>
+<div class="container text-center m-4 p-8">
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let user of usersAndClients">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{ user.firstName }} {{ user.lastName }}</h5>
+          <p class="card-text">Nom d'utilisateur: {{ user.username }}</p>
+          
+          <!-- Bouton pour consulter le profil -->
+          <button class="btn btn-primary" (click)="onViewProfile(user.username)">Consulter profil</button>
+          
+          <!-- Affichage conditionnel du composant PublicProfilComponent -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

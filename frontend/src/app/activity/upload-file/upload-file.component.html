@@ -1,0 +1,30 @@
+<div class="form-control" (keyup.enter)="closeDialog()">
+    <div class="modal-header">
+        <h2>Télécharger un fichier <i>Excel</i></h2>
+    </div>
+
+    <div mat-dialog-content>
+        <label for="uploadFileField" class="form-label">Sélectionner un fichier</label>
+        <input class="form-control" type="file" name="uploadFileField" id="uploadFileField" #fileToUpld />
+        <div
+            *ngIf="showError && errorMsgFormatExcel === 'Le format du fichier ajouté n\'est pas respecté.'"
+            class="error-message mt-2"
+        >
+            Le format du fichier ajouté n'est pas respecté. Veuillez choisir un fichier Excel.
+        </div>
+        <!--<div
+            *ngIf="
+                showError &&
+                errorMsgFormatExcel === 'Un fichier avec ce nom existe déjà. Veuillez choisir un autre fichier.'
+            "
+            class="error-message"
+        >
+            Un fichier avec ce nom existe déjà. Veuillez choisir un autre fichier.
+        </div>-->
+    </div>
+
+    <div class="mt-3 mb-2">
+        <button class="btn btn-danger me-2" (click)="closeDialog()">Annuler</button>
+        <button class="btn btn-success" (click)="uploadFile()">Télécharger</button>
+    </div>
+</div>

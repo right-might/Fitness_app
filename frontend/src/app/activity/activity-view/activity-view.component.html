@@ -1,0 +1,64 @@
+<div class="form-control scrollbarV" style="width: 50rem" (keyup.enter)="closeDialog()">
+    <div>
+        <button type="button" class="btn-close text-end" (click)="closeDialog()"></button>
+        <h2 class="text-center">
+            Activité : <i> {{ activity.description_activity }}</i>
+        </h2>
+    </div>
+    <div class="card-body">
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <strong>Date&nbsp;:&nbsp;</strong>{{ activity.date | date : 'dd/MM/yyyy' }}
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Type&nbsp;:&nbsp;</strong>{{ capitalizeFirstLetter(activity.type_activity) }}
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <strong>Distance&nbsp;:&nbsp;</strong>{{ activity.distance_km }}&nbsp;km
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Durée&nbsp;:&nbsp;</strong>{{ activity.duration_min }}&nbsp;min
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Allure&nbsp;:&nbsp;</strong>
+                        {{ activity.duration_min / activity.distance_km | number : '1.0-2' }}&nbsp;min/km
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <strong>Rythme&nbsp;cardiaque&nbsp;:&nbsp;</strong>{{ activity.heart_beat_min }}&nbsp;bpm
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Température&nbsp;:&nbsp;</strong>{{ activity.temperature_c }}&nbsp;°C
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-md-12 mt-3 mb-3">
+                <ul class="list-group">
+                    <li class="list-group-item"><strong>Commentaires </strong></li>
+                    <li class="list-group-item">{{ activity.comment }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!--<div class="text-center">
+        <button class="btn btn-primary mb-2" (click)="closeDialog()">OK</button>
+    </div>
+
+    <hr />-->
+    <div>
+        <div *ngIf="activity.gpx_file">
+            <app-activity-map [activity]="activity"></app-activity-map>
+        </div>
+    </div>
+</div>

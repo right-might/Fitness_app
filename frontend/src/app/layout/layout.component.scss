@@ -1,0 +1,41 @@
+.material-symbols-outlined {
+  color: white;
+}
+
+.icon-button {
+    border: none;
+    background: none;
+    padding: 0;
+    cursor: pointer; /* Pour changer le curseur en pointeur au survol */
+}
+
+.dropdown-menu {
+    left: 50%; /* Positionne le point de départ du dropdown à 50% de la largeur du bouton */
+    transform: translateX(-50%);
+    width: 260px; /* Largeur du dropdown */
+}
+
+.dropdown-item {
+    color: #007bff; /* Couleur primaire de Bootstrap */
+    text-align: center;
+}
+
+.dropdown-item:hover {
+    background-color: #e9dfdf; /* Couleur de fond au survol */
+    color: #007bff; /* Couleur du texte au survol */
+}
+
+
+.notification-badge {
+    position: absolute;
+    top: -15px; /* Ajustez la position verticale  */
+    right: -1px; /* Ajustez la position horizontale */
+    background-color: red;
+    color: white;
+    border-radius: 50%; /* Pour rendre le badge circulaire */
+    padding: 2px 4px; /* Ajustez le rembourrage */
+    font-size: 15px; /* Ajustez la taille de la police  */
+}
+
+
+

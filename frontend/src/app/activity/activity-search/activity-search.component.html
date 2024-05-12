@@ -1,0 +1,17 @@
+<form #searchForm="ngForm" (change)="onSearch(searchForm)" (ngSubmit)="onSearch(searchForm)">
+    <div class="input-group">
+        <div class="input-group-append">
+            <button class="input-group-text" type="submit">
+                <mat-icon>search</mat-icon>
+            </button>
+        </div>
+        <input
+            class="form-control"
+            type="text"
+            [placeholder]="'Search' | translate"
+            name="searchText"
+            [(ngModel)]="searchText"
+            (input)="onSearch(searchForm)"
+        />
+    </div>
+</form>

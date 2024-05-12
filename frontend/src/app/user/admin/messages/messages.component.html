@@ -1,0 +1,13 @@
+<div class="message-list row">
+  <div *ngFor="let message of messages" class="message-item col-md-4 mb-4">
+    <div class="card">
+      <div class="card-header bg-primary text-white">{{ message.sujet }}</div>
+      <div class="card-body">
+        <p>{{ message.contenu }}</p>
+        <p>Date: {{ message.date }}</p>
+        <p>Heure: {{ message.heure }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="messages.length === 0" class="no-messages alert alert-info col-md-12">Aucun message à afficher</div>

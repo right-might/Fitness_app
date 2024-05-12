@@ -1,0 +1,124 @@
+<div class="container">
+    <table mat-table class="table table-striped mat-elevation-z8" [dataSource]="dataSource">
+        <!-- ID Column -->
+        <ng-container matColumnDef="id_activity">
+            <th *matHeaderCellDef mat-sort-header>ID</th>
+            <td *matCellDef="let activity">{{ activity.id_activity }}</td>
+        </ng-container>
+
+        <!-- Checkbox Column -->
+        <ng-container matColumnDef="select">
+            <th *matHeaderCellDef class="bg-primary text-white"></th>
+            <td *matCellDef="let row">
+                <mat-checkbox
+                    color="primary"
+                    class="mat-checkbox-rounded"
+                    (click)="$event.stopPropagation()"
+                    (change)="$event ? selection.toggle(row) : null"
+                    [checked]="selection.isSelected(row)"
+                >
+                </mat-checkbox>
+            </td>
+        </ng-container>
+
+        <!-- Index Column -->
+        <ng-container matColumnDef="index">
+            <th *matHeaderCellDef mat-sort-header>Index</th>
+            <td *matCellDef="let activity; let i = index">{{ i + 1 }}</td>
+        </ng-container>
+
+        <!-- ID Client Column -->
+        <ng-container matColumnDef="id_client">
+            <th *matHeaderCellDef mat-sort-header>ID Client</th>
+            <td *matCellDef="let activity">{{ activity.id_client }}</td>
+        </ng-container>
+
+        <!-- Description Column -->
+        <ng-container matColumnDef="description_activity">
+            <th th *matHeaderCellDef class="bg-primary">Description</th>
+            <td *matCellDef="let activity">{{ activity.description_activity }}</td>
+        </ng-container>
+
+        <!-- Type Column -->
+        <ng-container matColumnDef="type_activity">
+            <th *matHeaderCellDef class="bg-primary">Type</th>
+            <td *matCellDef="let activity">
+                {{ capitalizeFirstLetter(activity.type_activity) }}
+            </td>
+        </ng-container>
+
+        <!-- Date Column -->
+        <ng-container matColumnDef="date">
+            <th *matHeaderCellDef mat-sort-header class="bg-primary">Date</th>
+            <td *matCellDef="let activity">{{ activity.date | date }}</td>
+        </ng-container>
+
+        <!-- Duration Column -->
+        <ng-container matColumnDef="duration_min">
+            <th *matHeaderCellDef mat-sort-header class="bg-primary">{{ 'Duration (min)' | translate }}</th>
+            <td *matCellDef="let activity">{{ activity.duration_min | translate }}</td>
+        </ng-container>
+
+        <!-- Distance Column -->
+        <ng-container matColumnDef="distance_km">
+            <th *matHeaderCellDef mat-sort-header class="bg-primary">Distance (km)</th>
+            <td *matCellDef="let activity">{{ activity.distance_km }}</td>
+        </ng-container>
+
+        <!-- Heart Rate Column -->
+        <ng-container matColumnDef="heart_beat_min">
+            <th *matHeaderCellDef mat-sort-header class="bg-primary">Rythme cardiaque (bpm)</th>
+            <td *matCellDef="let activity">{{ activity.heart_beat_min }}</td>
+        </ng-container>
+
+        <!-- Temperature Column -->
+        <ng-container matColumnDef="temperature_c">
+            <th *matHeaderCellDef mat-sort-header class="bg-primary">Température (°C)</th>
+            <td *matCellDef="let activity">{{ activity.temperature_c }}</td>
+        </ng-container>
+
+        <!-- Comment Column -->
+        <ng-container matColumnDef="comment">
+            <th *matHeaderCellDef mat-sort-header class="bg-primary">{{ 'Comments' | translate }}</th>
+            <td *matCellDef="let activity">{{ activity.comment }}</td>
+        </ng-container>
+
+        <!-- Edit and delete Column -->
+        <ng-container matColumnDef="action">
+            <th *matHeaderCellDef class="bg-primary"></th>
+            <td *matCellDef="let activity">
+                <button
+                    class="btn btn-outline-secondary me-2"
+                    (click)="onShowActivity(activity)"
+                    data-toggle="tooltip"
+                    [title]="'Visualize this activity' | translate"
+                >
+                    <i class="fas fa-eye"></i>
+                </button>
+
+                <button
+                    class="btn btn-outline-primary me-2"
+                    (click)="onModifyActivity(activity)"
+                    data-toggle="tooltip"
+                    [title]="'Edit this activity' | translate"
+                >
+                    <i class="fas fa-pen"></i>
+                </button>
+
+                <button
+                    class="btn btn-outline-danger"
+                    (click)="onDeleteActivity(activity)"
+                    data-toggle="tooltip"
+                    [title]="'Delete this activity' | translate"
+                >
+                    <i class="fas fa-trash"></i>
+                </button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+
+    <mat-paginator #paginator [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons></mat-paginator>
+</div>

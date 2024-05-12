@@ -1,0 +1,74 @@
+<div class="row">
+    <div class="col m-3">
+        <!-- Titre de la section -->
+        <h1 class="fw-bold">{{ 'List of Activities' | translate }}</h1>
+    </div>
+    <div class="col m-3">
+        <!-- Barre de recherche d'activités -->
+        <app-activity-search (searchActivity)="handleSearchSubmit($event)"></app-activity-search>
+    </div>
+</div>
+
+<!-- Barre de navigation -->
+<nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <!-- Bouton pour créer une nouvelle activité -->
+                    <button class="btn btn-outline-secondary me-3" (click)="createNewActivity()">
+                        <i class="fas fa-plus"></i> {{ 'New Activity' | translate }}
+                    </button>
+                </li>
+
+                <li class="nav-item">
+                    <!-- Bouton pour télécharger fichier Excel -->
+                    <button class="btn btn-outline-secondary me-3" (click)="openFileSelector()">
+                        <i class="fas fa-file-excel"></i> {{ 'Download Excel File' | translate }}
+                    </button>
+                </li>
+
+                <li class="nav-item">
+                    <!-- Bouton pour supprimer une sélection -->
+                    <button class="btn btn-outline-secondary me-3" (click)="openSelectedDialog()">
+                        <i class="fas fa-trash"></i> {{ 'Delete selection' | translate }}
+                    </button>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <!-- Bouton pour filtrer par date -->
+                    <button
+                        class="btn btn-outline-secondary me-1"
+                        id="navbarDropdown"
+                        data-bs-toggle="dropdown"
+                        (click)="toggleDatePicker()"
+                        data-toggle="tooltip"
+                        [title]="'Filter by dates' | translate"
+                    >
+                        <i class="fas fa-filter"></i> Date
+                        <span *ngIf="!datePickerOpened" class="material-icons">arrow_drop_down</span>
+                        <span *ngIf="datePickerOpened" class="material-icons">arrow_drop_up</span>
+                    </button>
+                    <!-- Menu déroulant avec le filtre de date -->
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown" (click)="closeDropdown($event)">
+                        <form>
+                            <!-- Composant de sélection de date -->
+                            <app-date-filter (dateSelected)="dateSelectionChanged($event)"></app-date-filter>
+                        </form>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <!-- Bouton pour supprimer le filtre -->
+                    <button class="btn btn-outline-secondary pb-2 pt-2" (click)="showAll()">
+                        {{ 'Show all activities' | translate }}
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<br />
+
+<!-- Emetteur d'événements d'activités -->
+<app-emitter (activityEvent)="sendActivity($event)"></app-emitter>

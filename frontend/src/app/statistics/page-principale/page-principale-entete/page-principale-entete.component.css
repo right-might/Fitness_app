@@ -1,0 +1,32 @@
+.top-bar {
+    background-color: rgb(66, 126, 204);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .activity {
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+  }
+  
+  .date {
+    margin: 0;
+    font-size: 18px;
+  }
+  
+  .activity p,
+  .date p {
+    margin: 0;
+  }
+  
+  .material-symbols-outlined {
+    font-size: 40px;
+    color: white;
+    cursor: pointer;
+  }
+  

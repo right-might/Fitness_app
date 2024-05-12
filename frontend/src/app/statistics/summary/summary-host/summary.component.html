@@ -1,0 +1,57 @@
+<div class="container">
+
+    <div class="choice">
+        <h5> Meilleurs statistiques : </h5>
+        <span class="custom-dropdown custom-dropdown--white">
+            <select class="custom-dropdown__select custom-dropdown__select--white">
+                <option>{{activity_course}}</option>
+                <option>{{activity_walk}}</option>
+            </select>
+        </span>
+    </div>
+
+    <div class="container-pace">
+        <div class="container-pace-infos">
+            <div class="pace-current">
+                <p>Allure courant :</p>
+                <p class="pace-current-value">
+                    {{current_pace}}
+                </p>
+            </div>
+            <div class="pace-values">
+                <p>min : {{min_pace}}</p>
+                <p>moy : {{moy_pace}}</p>
+                <p>max : {{max_pace}}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-speed">
+        <div class="container-speed-infos">
+            <div class="speed-current">
+                <p>Vitesse courante : </p>
+                <p class="speed-current-value">
+                    {{current_speed}}
+                </p>
+            </div>
+            <div class="speed-values">
+                <p>min : {{min_speed}}</p>
+                <p>moy : {{moy_speed}}</p>
+                <p>max : {{max_speed}}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-comment">
+        <p>Commentaires</p>
+        <ul class="speed-coach-comment">
+            <li>Vitesse constante</li>
+            <li>Parcours non suffisant</li>
+        </ul>
+    </div>
+
+</div>
+
+<app-week-summary>
+
+</app-week-summary>

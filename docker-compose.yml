@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+    frontend:
+        image: registry.gitlab.info.uqam.ca/inm5151-h24/456-en-binaire/frontend:latest
+        ports:
+            - '80:80'
+        depends_on:
+            - backend
+        networks:
+            - app-network
+
+    backend:
+        image: registry.gitlab.info.uqam.ca/inm5151-h24/456-en-binaire/backend:latest
+        ports:
+            - '8080:8080'
+        environment:
+            JDBC_URL: jdbc:mysql://mysql-db:3306/456binaire?allowPublicKeyRetrieval=true&useSSL=false
+            BD_USERNAME: root
+            BD_PASSWORD: root
+        networks:
+            - app-network
+
+networks:
+    app-network:
+        driver: bridge

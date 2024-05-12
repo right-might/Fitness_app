@@ -1,0 +1,76 @@
+<div class="container mt-4">
+  <div class="card">
+    <div class="card-header">
+      <h2>Profil Utilisateur</h2>
+    </div>
+    <div class="card-body">
+      <div class="row" *ngIf="userProfile">
+        <!-- Colonne pour la photo de profil -->
+        <div class="col-md-3">
+          <img
+            [src]="userProfile.profilePicture"
+            class="img-fluid rounded-circle"
+            alt="Photo de profil"
+          />
+        </div>
+        <!-- Colonne pour les détails du profil -->
+        <div class="col-md-9">
+          <div class="row mb-3" >
+            <div class="col">
+              <label class="form-label"><strong>Prénom:</strong></label>
+              <p class="form-control-static">{{ userProfile.firstName }}</p>
+            </div>
+            <div class="col" *ngIf="userProfile.lastName">
+              <label class="form-label"><strong>Nom:</strong></label>
+              <p class="form-control-static">{{ userProfile.lastName }}</p>
+            </div>
+          </div>
+          <div class="row mb-3" *ngIf="userProfile.username">
+            <div class="col">
+              <label class="form-label"
+                ><strong>Nom d'utilisateur:</strong></label
+              >
+              <p class="form-control-static">{{ userProfile.username }}</p>
+            </div>
+            <div class="col" *ngIf="userProfile.email">
+              <label class="form-label"><strong>Email:</strong></label>
+              <p class="form-control-static">{{ userProfile.email }}</p>
+            </div>
+          </div>
+          <div class="row mb-3" *ngIf="userProfile.role">
+            <div class="col">
+              <label class="form-label"><strong>Rôle:</strong></label>
+              <p class="form-control-static">{{ userProfile.role }}</p>
+            </div>
+          </div>
+          <div class="row mb-3" *ngIf="userProfile.bio">
+            <div class="col">
+              <label class="form-label"><strong>Bio:</strong></label>
+              <p class="form-control-static">{{ userProfile.bio }}</p>
+            </div>
+          </div>
+          <div class="row mb-3" *ngIf="userProfile.trainerUsername">
+            <div class="col">
+              <label class="form-label"
+                ><strong>Nom de l'entraîneur:</strong></label
+              >
+              <p class="form-control-static">
+                {{ userProfile.trainerUsername }}
+              </p>
+            </div>
+          </div>
+         
+          <div *ngIf="userActivities && userActivities.length > 0">
+            <li *ngFor="let activity of userActivities">
+              <p><strong>Date de l'activité:</strong> {{ activity.date }}</p>
+              <p><strong>Nom de l'activité:</strong> {{ activity.comment}}</p>
+
+          </div>
+          <div *ngIf="userActivities && userActivities.length === 0">
+            <p>Aucune activité disponible.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

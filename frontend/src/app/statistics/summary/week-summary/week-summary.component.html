@@ -1,0 +1,69 @@
+<div class="container">
+    <div class="choice">
+        <h5> Statistiques de la Semaine : </h5>
+        <span class="custom-dropdown custom-dropdown--white">
+            <select class="custom-dropdown__select custom-dropdown__select--white">
+                <option>{{activity_title_course}}</option>
+                <option>{{activity_title_walk}}</option>
+            </select>
+        </span>
+    </div>
+
+    <div class="pace-and-speed-container">
+
+        <div class="pace-container">
+            <div class="pace-current">
+                <p>Allure courant :</p>
+                <p class="pace-current-value">
+                    {{current_pace}}
+                </p>
+            </div>
+
+            <div class="pace-values">
+                <div class="pace-min">
+                    <p>min : </p>
+                    <p>{{min_pace}}</p>
+                </div>
+                <div class="pace-moy">
+                    <p>moy : </p>
+                    <p>{{moy_pace}}</p>
+                </div>
+                <div class="pace-max">
+                    <p>max : </p>
+                    <p>{{max_pace}}</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="speed-container">
+            <div class="speed-current">
+                <p>Vitesse courante : </p>
+                <p class="speed-current-value">
+                    {{current_speed}}
+                </p>
+            </div>
+            <div class="speed-values">
+                <div class="speed-min">
+                    <p>min : </p>
+                    <p>{{min_speed}}</p>
+                </div>
+                <div class="speed-moy">
+                    <p>moy : </p>
+                    <p>{{moy_speed}}</p>
+                </div>
+                <div class="speed-max">
+                    <p>max : </p>
+                    <p>{{max_speed}}</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="stat-graph-container">
+        <app-bar-chart class="graph-content">
+
+        </app-bar-chart>
+    </div>
+</div>

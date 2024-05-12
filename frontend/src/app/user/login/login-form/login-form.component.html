@@ -1,0 +1,23 @@
+<form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+    <div class="mb-3">
+      <label for="username" class="form-label">Nom Utilisateur ou Email:</label>
+      <input type="text" class="form-control" id="username" formControlName="username" required>
+      <div *ngIf="showMissingUsername()" class="text-danger">Username is required.</div>
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Mot de passe:</label>
+      <div class ="input-group">
+        <input type="password" class="form-control" id="password" formControlName="password" required>
+        <span class="input-group-text" id="togglePassword" (click)="togglePasswordVisibility('password')">
+          <i class="fa fa-eye" aria-hidden="true"></i>
+        </span>
+      </div>
+    </div>   
+    <br>
+    <a routerLink="/auth/login/resetpassword"> 
+      Mot de passe oublie
+    </a>   
+    <br><br>
+    <button type="submit" class="btn btn-primary">Connecter</button>
+  </form> 
+  

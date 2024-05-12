@@ -1,0 +1,38 @@
+.notebook{
+    background-color: #f0e68c;
+    border: 1px solid #d2b48c;
+    box-shadow: 5px, 5px, 15px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 800px;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    border-bottom: 2px dashed #d2b48c;
+    h2{
+        margin: 0;
+        font-family: 'Courier New', Courier, monospace;
+    }
+}
+
+
+app-selector{
+    select{
+        font-family: 'Courier New', Courier, monospace;
+        padding: 5px;
+        background-color: white;
+        border: 1px solid #d2b48c;
+        border-radius: 5px;
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+        &:focus {
+            outline: none;
+            border-color: #0056b3;
+            box-shadow: 0 0 10px rgba(0, 86, 179, 0.25);
+        }
+    }
+}

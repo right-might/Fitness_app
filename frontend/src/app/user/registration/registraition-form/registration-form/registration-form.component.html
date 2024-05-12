@@ -1,0 +1,49 @@
+<form [formGroup]="registrationForm" (ngSubmit)="onCreate()">
+  <div class="mb-3">
+    <label for="firstName" class="form-label">Nom:</label>
+    <input type="text" class="form-control" id="firstName" formControlName="firstName">
+    <div *ngIf="showMissing('firstName')" class="text-danger">Nom requis</div>
+  </div>
+  
+  <div class="mb-3">
+    <label for="lastName" class="form-label">Prénom:</label>
+    <input type="text" class="form-control" id="lastName" formControlName="lastName">
+    <div *ngIf="showMissing('lastName')" class="text-danger">Prénom requis</div>
+  </div>
+   
+  <div class="mb-3">
+    <label for="username" class="form-label">Nom Utilisateur:</label>
+    <input type="text" class="form-control" id="username" formControlName="username">
+    <div *ngIf="showMissing('username')" class="text-danger">Nom Utilisateur requis</div>
+  </div> 
+
+  <div class="mb-3">
+    <label for="email" class="form-label">Email:</label>
+    <input type="email" class="form-control" id="email" formControlName="email">
+    <div *ngIf="isEmailInvalid()" class="text-danger">Email invalide</div>
+
+    <div *ngIf="showMissing('email')" class="text-danger">Email requis</div>
+  </div>
+
+  <div class="mb-3">
+    <label for="dateOfBirth" class="form-label">Date de naissance:</label>
+    <input type="date" class="form-control" id="dateOfBirth" formControlName="dateOfBirth">
+    <div *ngIf="showMissing('dateOfBirth')" class="text-danger">Date de naissance requise</div>
+    <div *ngIf="validateDateOfBirth(registrationForm.get('dateOfBirth'))" class="text-danger">Vous devez avoir au moins 18 ans.</div>
+  </div>
+
+
+  <div class="mb-3">
+    <label for="password" class="form-label">Mot de passe:</label>
+    <div class ="input-group">
+      <input type="password" class="form-control" id="password" formControlName="password" required> 
+      <div *ngIf="showMissing('password')" class="text-danger">Mot de passe requis</div>
+      <div *ngIf="isPasswordWeak()" class="text-danger">Le mot de passe doit avoir au moins 6 caractères</div>
+      <span class="input-group-text" id="togglePassword" (click)="togglePasswordVisibility('password')">
+        <i class="fa fa-eye" aria-hidden="true"></i>
+      </span>
+    </div>
+  </div>
+ 
+  <button type="submit" class="btn btn-primary">Créer</button>
+</form>

@@ -1,0 +1,24 @@
+<form [formGroup]="securityForm" (ngSubmit)="onCreate()">
+  
+    <div class="mb-3">
+        <label for="reponse1" class="form-label">Quel est le nom de ton meilleur ami ?:</label>
+        <input type="text" class="form-control" id="reponse1" formControlName="reponse1">
+        <div *ngIf="showMissing('reponse1')" class="text-danger">Champ requis</div>
+    </div> 
+
+    <div class="mb-3">
+        <label for="reponse2" class="form-label">Quel est le nom de ton ecole primaire ?:</label>
+        <input type="text" class="form-control" id="reponse2" formControlName="reponse2">
+        <div *ngIf="showMissing('reponse2')" class="text-danger">Champ requis</div>
+    </div>  
+  
+    <div class="mb-3">
+        <label for="reponse3" class="form-label">Quel est ton plat prefere ?:</label>
+        <input type="text" class="form-control" id="reponse3" formControlName="reponse3">
+        <div *ngIf="showMissing('reponse3')" class="text-danger">Champ requis</div>
+    </div>  
+
+    <button type="submit" class="btn btn-primary">Confirmer</button>
+
+
+</form>

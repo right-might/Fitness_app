@@ -1,0 +1,45 @@
+<div class="container-fluid">
+  <div class="row m-5">
+    <div class="col-md-6 offset-md-3 text-center">
+      <h3>Entraînez-vous intelligemment, Suivez plus intelligemment.</h3> 
+      <div class="mt-4" *ngIf="!isLoggedIn()"> 
+        <a class="btn btn-primary btn-lg mr-2" href="/auth/login">Se Connecter</a>
+        <a class="btn btn-secondary btn-lg m-3" href="/user/register">Créer un Compte</a>
+      </div>
+    </div>
+  </div>
+  <p class="text-center">Ce que nous offrons</p> 
+
+  <div class="row mt-4">
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title">Trouver un entraîneur</h2>
+          <p class="card-text">
+            Trouvez un entraîneur expérimenté qui correspond à vos besoins et objectifs de remise en forme.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title">Créer un plan d'entraînement</h2>
+          <p class="card-text">
+            Concevez un plan d'entraînement personnalisé adapté à vos objectifs de fitness et à votre niveau de forme actuel.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title">Analysez votre parcours</h2>
+          <p class="card-text">
+            Suivez et analysez vos progrès au fil du temps grâce à des outils d'analyse avancés et des rapports détaillés.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

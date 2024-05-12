@@ -1,0 +1,11 @@
+<div class="form-group">
+    <label class="control-label" for="activityComments">Commentaires</label>
+    <textarea name="comment" [(ngModel)]="comment" (ngModelChange)="onCommentChange()" id="activityComments" class="form-control" rows="3" maxlength="100" placeholder="Saisissez vos commentaires ici..." required></textarea>
+    
+    <span class="form-help">
+        <span class="small" [ngClass]="{'text-black': comment.length <= maxLength * 0.75, 'text-danger': comment.length > maxLength * 0.25}">
+            {{ maxLength - comment.length }} / {{ maxLength }} caractères restants
+        </span>
+    </span>
+
+</div>

@@ -1,0 +1,9 @@
+<!-- activity-management.component.html -->
+<div class="container mt-4">
+    <!-- <h2>Ajouter une nouvelle activité</h2> -->
+
+    <!-- Formulaire de création d'activité -->
+    <div class="container my-3">
+        <app-receiver (newActivity)="handleFormSubmit($event)" [oldActivity]="receivedActivity"></app-receiver>
+    </div>
+</div>

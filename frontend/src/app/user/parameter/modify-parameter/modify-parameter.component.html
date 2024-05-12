@@ -1,0 +1,39 @@
+<form [formGroup]="modifyForm" (ngSubmit)="onSave()">
+    <div class="mb-3">
+        <h2>Paramètres</h2>
+    </div>
+    <div class="mb-3">
+        <label for="lastName" class="form-label">Prénom:</label> 
+        <input type="text" id="lastName" class="form-control" formControlName="firstName" (input)="onInputChange()">
+        <div *ngIf="showMissing('lastName')" class="text-danger">Prénom requis</div>
+    </div>
+    
+    <div class="mb-3">
+        <label for="firstName" class="form-label">Nom:</label> 
+        <input type="text" id="firstName" class="form-control" formControlName="lastName" (input)="onInputChange()">
+        <div *ngIf="showMissing('firstName')" class="text-danger">Nom requis</div>
+    </div>
+    
+    
+    <div class="mb-3">
+        <label for="username" class="form-label">Nom Utilisateur:</label> 
+        <input type="text" id="username" class="form-control" formControlName="username" (input)="onInputChange()">
+        <div *ngIf="showMissing('username')" class="text-danger">Nom Utilisateur requis</div>
+    </div>
+    
+    
+    
+    <div class="mb-3">
+        <label for="email" class="form-label">Email:</label> 
+        <input type="email" id="email" class="form-control" formControlName="email" (input)="onInputChange()">
+        <div *ngIf="isEmailInvalid()" class="text-danger">Email invalide</div>
+        <div *ngIf="showMissing('email')" class="text-danger">Email requis</div>
+    </div>
+    
+    <div class="mb-3">
+        <label for="password" class="form-label">Mot de passe:</label> 
+        <input type="password" id="password" class="form-control" [disabled]="true" value="{{userProfile?.password}}" (input)="onInputChange()" data-bs-toggle="tooltip" title="Contactez l'administrateur pour modifier votre mot de passe.">
+    </div>
+    
+    <button type="submit" class="btn btn-primary" [disabled]="!changesMade">Enregistrer</button>
+    </form>

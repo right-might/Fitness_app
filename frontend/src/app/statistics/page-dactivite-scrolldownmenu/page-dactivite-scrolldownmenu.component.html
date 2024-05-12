@@ -1,0 +1,49 @@
+<div class="dropdown">
+  <button (click)="toggleDropdown()">{{ selectedActivity }}</button>
+  <div *ngIf="isDropdownOpen" class="dropdown-content">
+    <div (click)="selectActivity('Toutes')">Toutes</div>
+    <div (click)="selectActivity('Marche')">Marche</div>
+    <div (click)="selectActivity('Vélo')">Vélo</div>
+    <div (click)="selectActivity('Course')">Course</div>
+  </div>
+</div>
+
+<div class="activities-list">
+  <ul>
+    <li *ngFor="let activity of activities[selectedActivity]">
+      {{ activity }}
+    </li>
+  </ul>
+
+  <div *ngIf="selectedActivity === 'Marche'" class="comment-box">
+    <div class="c">Commentaire de l'entraineur :</div>
+    <div class="comment">{{ commentForMarche }}</div>
+    <textarea
+      [(ngModel)]="comments['Marche']"
+      placeholder="Laissez un commentaire"
+    ></textarea>
+    <button class="sendbutton" (click)="updateComment('Marche')">
+      Publier
+    </button>
+  </div>
+  <div *ngIf="selectedActivity === 'Course'" class="comment-box">
+    <div class="c">Commentaire de l'entraineur :</div>
+    <div class="comment">{{ commentForCourse }}</div>
+    <textarea
+      [(ngModel)]="comments['Course']"
+      placeholder="Laissez un commentaire"
+    ></textarea>
+    <button class="sendbutton" (click)="updateComment('Course')">
+      Publier
+    </button>
+  </div>
+  <div *ngIf="selectedActivity === 'Vélo'" class="comment-box">
+    <div class="c">Commentaire de l'entraineur :</div>
+    <div class="comment">{{ commentForVelo }}</div>
+    <textarea
+      [(ngModel)]="comments['Velo']"
+      placeholder="Laissez un commentaire"
+    ></textarea>
+    <button class="sendbutton" (click)="updateComment('Vélo')">Publier</button>
+  </div>
+</div>

@@ -1,0 +1,276 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2 mb-4">
+            <div class="card shadow">
+                <h1 class="card-header bg-primary text-white text-center fw-bold">{{ title }}</h1>
+                <div class="card-body">
+                    <form #activityForm="ngForm" (ngSubmit)="onSubmit(activityForm)" (keyup.enter)="onCancel()">
+                        <!-- Les champs du formulaire -->
+
+                        <!-- ID de l'activité -->
+                        <div class="mb-3 invisible">
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="activityId"
+                                name="id_activity"
+                                [(ngModel)]="id_activity"
+                            />
+                        </div>
+
+                        <!-- Nom de l'activité -->
+                        <div class="mb-3">
+                            <label for="activityDescription" class="form-label">Nom de l'activité</label>
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="activityDescription"
+                                name="description_activity"
+                                [(ngModel)]="description_activity"
+                                required
+                                (ngModelChange)="validateDescription()"
+                                (blur)="validateDescription()"
+                            />
+                            <div
+                                *ngIf="
+                                    description_empty &&
+                                    (activityForm.controls['description_activity'].dirty ||
+                                        activityForm.controls['description_activity'].touched)
+                                "
+                                class="text-danger"
+                            >
+                                Le nom est requis.
+                            </div>
+                            <div
+                                *ngIf="
+                                    description_invalid &&
+                                    (activityForm.controls['description_activity'].dirty ||
+                                        activityForm.controls['description_activity'].touched)
+                                "
+                                class="text-danger"
+                            >
+                                Le nom doit avoir au moins 3 caractères.
+                            </div>
+                        </div>
+
+                        <!-- Date et Type d'activité -->
+                        <div class="row">
+                            <div class="col mb-3">
+                                <label for="activityType" class="form-label">Type d'activité</label>
+                                <select
+                                    class="form-select"
+                                    id="activityType"
+                                    name="type_activity"
+                                    [(ngModel)]="type_activity"
+                                    required
+                                    (ngModelChange)="validateType()"
+                                    (blur)="validateType()"
+                                >
+                                    <option *ngFor="let type of types" [value]="type.toLowerCase()">{{ type }}</option>
+                                </select>
+                                <div
+                                    *ngIf="
+                                        type_empty &&
+                                        (activityForm.controls['type_activity'].dirty ||
+                                            activityForm.controls['type_activity'].touched)
+                                    "
+                                    class="text-danger"
+                                >
+                                    Le type est requis.
+                                </div>
+                            </div>
+
+                            <div class="col mb-3">
+                                <label for="activityDate" class="form-label">Date d'activité</label>
+                                <input
+                                    type="date"
+                                    class="form-control"
+                                    id="activityDate"
+                                    name="date"
+                                    [(ngModel)]="dateString"
+                                    required
+                                    (ngModelChange)="validateDate()"
+                                    (blur)="validateDate()"
+                                />
+                                <div
+                                    *ngIf="
+                                        date_invalid &&
+                                        (activityForm.controls['date'].dirty || activityForm.controls['date'].touched)
+                                    "
+                                    class="text-danger"
+                                >
+                                    La date doit être antérieure ou égale à la date actuelle.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Distance, Durée et Allure -->
+                        <div class="row">
+                            <div class="col mb-3">
+                                <label for="activityDistance" class="form-label">Distance (km)</label>
+                                <input
+                                    type="number"
+                                    class="form-control"
+                                    id="activityDistance"
+                                    name="distance_km"
+                                    [(ngModel)]="distance_km"
+                                    required
+                                    (ngModelChange)="onDurDistChange()"
+                                    (blur)="validateDistance()"
+                                />
+                                <div
+                                    *ngIf="
+                                        distance_empty &&
+                                        (activityForm.controls['distance_km'].dirty ||
+                                            activityForm.controls['distance_km'].touched)
+                                    "
+                                    class="text-danger"
+                                >
+                                    La distance est requise.
+                                </div>
+                                <div
+                                    *ngIf="
+                                        distance_invalid &&
+                                        (activityForm.controls['description_activity'].dirty ||
+                                            activityForm.controls['description_activity'].touched)
+                                    "
+                                    class="text-danger"
+                                >
+                                    La distance doit etre strictement positive.
+                                </div>
+                            </div>
+
+                            <div class="col mb-3">
+                                <label for="activityDuration" class="form-label">Durée (minutes)</label>
+                                <input
+                                    type="number"
+                                    class="form-control"
+                                    id="activityDuration"
+                                    name="duration_min"
+                                    [(ngModel)]="duration_min"
+                                    required
+                                    (ngModelChange)="onDurDistChange()"
+                                    (blur)="validateDuration()"
+                                />
+                                <div
+                                    *ngIf="
+                                        duration_empty &&
+                                        (activityForm.controls['duration_min'].dirty ||
+                                            activityForm.controls['duration_min'].touched)
+                                    "
+                                    class="text-danger"
+                                >
+                                    La durée est requise.
+                                </div>
+                                <div
+                                    *ngIf="
+                                        duration_invalid &&
+                                        (activityForm.controls['duration_min'].dirty ||
+                                            activityForm.controls['duration_min'].touched)
+                                    "
+                                    class="text-danger"
+                                >
+                                    La durée doit etre strictement positive.
+                                </div>
+                            </div>
+
+                            <div class="col mb-3">
+                                <label for="activityPace" class="form-label">Allure (minutes/km)</label>
+                                <input
+                                    type="number"
+                                    class="form-control"
+                                    id="activityPace"
+                                    name="pace"
+                                    step="0.01"
+                                    [(ngModel)]="pace"
+                                    [disabled]="!isPaceEditable"
+                                />
+                            </div>
+                        </div>
+
+                        <!-- Rythme cardiaque, température et fichier gpx -->
+                        <div class="row">
+                            <div class="col mb-3">
+                                <label for="activityHeartBeat" class="form-label">Rythme cardiaque (bpm)</label>
+                                <input
+                                    type="number"
+                                    class="form-control"
+                                    id="activityHeartBeat"
+                                    name="heart_beat_min"
+                                    [(ngModel)]="heart_beat_min"
+                                    (ngModelChange)="validateHeartBeat()"
+                                    (blur)="validateHeartBeat()"
+                                />
+                                <div
+                                    *ngIf="
+                                        heart_beat_invalid &&
+                                        (activityForm.controls['heart_beat_min'].dirty ||
+                                            activityForm.controls['heart_beat_min'].touched)
+                                    "
+                                    class="text-danger"
+                                >
+                                    Le rythme cardiaque doit etre strictement positive.
+                                </div>
+                            </div>
+
+                            <div class="col mb-3">
+                                <label for="activityTemperature" class="form-label">Température (°C)</label>
+                                <input
+                                    type="number"
+                                    class="form-control"
+                                    id="activityTemperature"
+                                    name="temperature_c"
+                                    step="0.1"
+                                    [(ngModel)]="temperature_c"
+                                    (ngModelChange)="validateTemperature()"
+                                    (blur)="validateTemperature()"
+                                />
+                                <div
+                                    *ngIf="
+                                        temperature_invalid &&
+                                        (activityForm.controls['temperature_c'].dirty ||
+                                            activityForm.controls['temperature_c'].touched)
+                                    "
+                                    class="text-danger"
+                                >
+                                    La temperature ambiante doit etre comprise entre -20°C et 40°C.
+                                </div>
+                            </div>
+
+                            <div class="col mb-3">
+                                <label for="fileUpload" class="form-label">Ajouter fichier GPX</label>
+                                <input
+                                    class="form-control"
+                                    id="fileUpload"
+                                    type="file"
+                                    name="gpx_file"
+                                    (change)="onFileSelected($event)"
+                                />
+                            </div>
+                        </div>
+
+                        <!-- Commentaires -->
+                        <div class="mb-3">
+                            <app-character-counter
+                                (commentChanged)="onCommentChanged($event)"
+                                [comment]="comment"
+                            ></app-character-counter>
+                        </div>
+
+                        <!-- Bouton de soumission -->
+                        <div class="row">
+                            <div>
+                                <button type="button" class="btn btn-danger btn-lg me-3" (click)="onCancel()">
+                                    Annuler
+                                </button>
+                                <button type="submit" class="btn btn-success btn-lg">
+                                    {{ buttonText }}
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

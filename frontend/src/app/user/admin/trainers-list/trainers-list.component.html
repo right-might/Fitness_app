@@ -1,0 +1,31 @@
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h2 class="text-center">Liste d'entraîneurs dans le systeme</h2>
+            
+            <!-- Afficher les demandes d'entraîneurs -->
+            <div *ngIf="trainers.length > 0; else noRequests">
+                <ul class="list-group">
+                    <li *ngFor="let trainer of trainers" class="list-group-item d-flex flex-column align-items-start mb-4">
+                        <!-- Afficher les détails de chaque demande d'entraîneur -->
+                        <div class="trainer-details mb-3">
+                            <p><strong>Nom :</strong> {{ trainer.account.firstName }} {{ trainer.account.lastName }}</p>
+                            <p><strong>Username :</strong> {{ trainer.account.username }}</p>
+                            <p><strong>Email :</strong> {{ trainer.account.email }}</p>
+                        </div>
+                        <div class="buttons ">
+                            <button class="btn btn-success m-2 " >Voir profil</button>
+                            <button class="btn btn-danger">Retirer statut</button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Afficher un message si aucune demande d'entraîneur n'est disponible -->
+            <ng-template #noRequests>
+                <p class="alert alert-info">Aucune demande d'entraîneur disponible pour le moment.</p>
+            </ng-template>
+        </div>
+    </div>
+  </div>
+  

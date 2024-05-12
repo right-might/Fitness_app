@@ -1,0 +1,42 @@
+<div class="mb-3">
+  <h2>Paramètre</h2>
+</div>
+
+<div class="mb-3">
+  <label for="firstName" class="form-label">Nom:</label> 
+  <p>{{ userProfile?.firstName }}</p>
+</div>
+
+<div class="mb-3">
+  <label for="lastName" class="form-label">Prénom:</label> 
+  <p>{{ userProfile?.lastName }}</p>
+</div>
+
+<div class="mb-3">
+  <label for="username" class="form-label">Nom Utilisateur:</label> 
+  <p>{{ userProfile?.username }}</p>
+</div>
+
+<div class="mb-3">
+  <label for="email" class="form-label">Email:</label> 
+  <p>{{ userProfile?.email }}</p>
+</div>
+
+<div class="mb-3">
+  <label for="password" class="form-label">Mot de passe:</label> 
+  <!-- Affichage du mot de passe masqué -->
+  <p>{{ hidePassword(userProfile?.password ?? '') }}</p>
+</div>
+
+  <a  routerLink="/user/profile/parameter/modify" >Modifier</a> <br> 
+
+  <div class="col-12 mb-2">
+                <button
+                  class="btn btn-success btn-block"
+                  (click)="onUpdateUser()"
+                >
+                  Modifier
+                </button>
+              </div>
+
+

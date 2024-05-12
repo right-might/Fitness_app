@@ -1,0 +1,21 @@
+<form [formGroup]="securityQuestionForm" (ngSubmit)="onCreate()">
+    
+    <div class="mb-3">
+      <label for="email" class="form-label">Email:</label>
+      <input type="email" class="form-control" id="email" formControlName="email">
+      <div *ngIf="showMissing('email')" class="text-danger">Email invalide</div>
+      <div *ngIf="showMissing('email')" class="text-danger">Email requis</div>
+    </div>
+    
+    <div>
+      <label for="security" class="form-label">{{ selectedQuestion }}</label> <br>
+      <input type="security" class="form-control" id="security" formControlName="security">
+      <div *ngIf="showMissing('security')" class="text-danger">Réponse invalide</div>
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Valider</button>
+ 
+
+  
+     
+</form>

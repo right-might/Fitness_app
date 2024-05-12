@@ -1,0 +1,11 @@
+dx-scheduler{
+    flex: 1;
+    overflow: auto;
+    min-height: 80vh;
+    max-height: 100vh;
+}
+
+main {
+    display: flex;
+    overflow: auto;
+}

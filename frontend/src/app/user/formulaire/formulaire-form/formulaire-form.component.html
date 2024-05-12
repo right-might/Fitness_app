@@ -1,0 +1,22 @@
+<form [formGroup]="formulaireForm" (ngSubmit)="onCreate()"> 
+
+
+    <div class="mb-3">
+        <label for="sujet" class="form-label">Sujet: </label>
+      <input type="text" class="form-control" id="sujet" formControlName="sujet">
+      <div *ngIf="showMissing('sujet')" class="text-danger">Sujet requis</div>
+    </div> 
+
+
+    
+    <div class="mb-3">
+      <label for="contenu" class="form-label">Contenu:</label>
+      <textarea name="contenu" id="contenu" value="Ecrivez votre contenu ici" formControlName="contenu" style="width: 500px; height: 200px;"></textarea><br>
+      <div *ngIf="showMissing('contenu')" class="text-danger">Contenu requis</div>
+    </div>
+  
+
+  
+    <button type="submit" class="btn btn-primary">Envoyer</button>
+  </form>
+  

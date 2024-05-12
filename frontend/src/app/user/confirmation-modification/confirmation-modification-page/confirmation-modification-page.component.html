@@ -1,0 +1,11 @@
+<div class="confirmation-page" style="font-size: 24px; text-align: center;">
+    <h1 style="font-weight: bold;">Votre compte a été modifié avec succès.</h1>
+    <p>Voici les nouvelles informations : </p>
+    <div style="font-size: 20px; text-align: center; font-weight: bold;">
+        <p>Nom: {{ userData.firstName }} {{ userData.lastName }}</p>
+        <p>Nom d'utilisateur: {{ userData.username }}</p>
+        <p>Email: {{ userData.email }}</p>
+    </div>
+    <p>Merci !!</p>
+    <button class="btn btn-outline-secondary me-3" (click)="redirigerVersAutrePage()" style="background-color: blue; color: white;">Suivant</button>
+</div> 

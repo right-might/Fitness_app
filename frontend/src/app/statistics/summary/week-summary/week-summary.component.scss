@@ -1,0 +1,125 @@
+$White: hsl(0, 0%, 100%);
+$PaleBlue: hsl(221, 100%, 96%);
+$LightLavender: hsl(188, 46%, 84%);
+$DarkGrayBlue: hsl(224, 30%, 27%);
+
+$LightSlateBlue: hsl(252, 100%, 67%);
+$LightRoyalBlue: rgb(46, 43, 233);
+$VioletBlue: hsla(256, 72%, 46%, 1);
+$PersianBlue: hsla(241, 72%, 46%, 0);
+
+$LightRed: hsl(0, 40%, 84%);
+$OrangeyYellow: hsl(38, 53%, 83%);
+$GreenTeal: hsl(164, 48%, 88%);
+$CobaltBlue: rgb(196, 200, 243);
+
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    min-height: 85vh;
+    flex-direction: column;
+    border: 2px solid $PaleBlue;
+    width: 600px;
+    border-radius: 25px;
+    margin-top: 50px;
+    background-color: $LightLavender;
+    padding-bottom: 10px;
+    padding-top: 20px;
+
+    h5 {}
+
+    .pace-and-speed-container {
+        display: flex;
+        width: 90%;
+        margin: 10px;
+        align-items: center;
+        justify-content: space-between;
+
+        .pace-container {
+            margin: 10px;
+            border: 2px solid $LightLavender;
+            border-radius: 25px;
+            width: 320px;
+            padding: 20px;
+            background-color: #fff;
+        }
+
+        .speed-container {
+            margin: 10px;
+            border: 2px solid $LightLavender;
+            border-radius: 25px;
+            width: 320px;
+            padding: 18px;
+            background-color: #fff;
+        }
+
+        .pace-current {
+            display: flex;
+            justify-content: space-between;
+            border: 2px solid $LightLavender;
+            border-radius: 15px;
+            margin: 5px;
+            padding: 5px 10px 0px 10px;
+            background-color: $GreenTeal;
+        }
+
+        .pace-values {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border: 2px solid $LightLavender;
+            margin: 5px;
+            border-radius: 15px;
+            background-color: $GreenTeal;
+            padding: 5px 10px 0px 10px;
+
+            .pace-min,
+            .pace-max,
+            .pace-moy {
+                display: flex;
+                justify-content: space-between;
+            }
+        }
+
+        .speed-current {
+            display: flex;
+            justify-content: space-between;
+            border: 2px solid $LightLavender;
+            margin: 5px;
+            border-radius: 15px;
+            background-color: $GreenTeal;
+            padding: 5px 10px 0px 10px;
+
+        }
+
+        .speed-values {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border: 2px solid $LightLavender;
+            margin: 5px;
+            border-radius: 15px;
+            background-color: $GreenTeal;
+            padding: 5px 10px 0px 10px;
+
+            .speed-min,
+            .speed-max,
+            .speed-moy {
+                display: flex;
+                justify-content: space-between;
+            }
+        }
+    }
+}
+
+.stat-graph-container {
+    display: flex;
+    width: 700px;
+    justify-content: center;
+    align-items: center;
+}

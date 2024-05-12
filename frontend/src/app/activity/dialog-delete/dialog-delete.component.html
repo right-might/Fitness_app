@@ -1,0 +1,24 @@
+<div class="card" (keyup.enter)="closeDialog()">
+    <div class="card-header text-center fw-bold pt-3 pb-3 bg-secondary text-white">
+        <i class="fas fa-exclamation-triangle" style="font-size: 24px; color: #ffcc00"></i> Confirmation de suppression
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">
+            <p>
+                Voulez-vous vraiment supprimer l'activité : <br />
+                "<span class="highlight">{{ data.existingActivity.description_activity }}</span
+                >" du "<span class="highlight">{{ data.existingActivity.date }}</span
+                >"? <br />
+            </p>
+            <p>
+                <b>Attention! Cette action est irréversible et les données seront définitivement perdues.</b>
+            </p>
+        </h5>
+        <div class="row">
+            <div class="pt-2">
+                <button mat-raised-button class="btn btn-danger me-2" (click)="closeDialog()">Annuler</button>
+                <button mat-raised-button class="btn btn-success" (click)="onConfirm()">Supprimer</button>
+            </div>
+        </div>
+    </div>
+</div>

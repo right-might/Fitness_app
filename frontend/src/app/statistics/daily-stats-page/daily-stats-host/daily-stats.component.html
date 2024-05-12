@@ -1,0 +1,11 @@
+<div class="notebook">
+    <div class="header">
+        <h2>{{ selectedDate | date: 'longDate' }}</h2>
+        <app-selector (selectionChange)="onSelectionChanged($event)"></app-selector>
+    </div>
+    <app-performance-chart [chartData]="graph"></app-performance-chart>
+</div>
+
+
+
+

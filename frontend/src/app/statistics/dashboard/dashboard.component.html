@@ -1,0 +1,16 @@
+<div class="buttons-container">
+  <button (click)="activerComparaison()" class="compare-btn">Mode Comparaison</button>
+  <a (click)="retourSemaine()" class="previous round" [class.disabled]="!previousWeekEnabled"> << Semaine précédente</a>
+  <a (click)="prochaineSemaine()" class="next round" [class.disabled]="!nextWeekEnabled">Semaine suivante >> </a>
+</div>
+
+<div class="checkbox-container" *ngIf="comparaisonActive">
+  <label *ngFor="let day of daysOfWeek">
+    <input type="checkbox" [value]="day" [checked]="isSelected(day)" (change)="toggleSelection($event)">
+    {{ day }}
+  </label>
+  <button (click)="comparerJours()" [disabled]="selectedDays.length !== 2">Comparer</button>
+</div>
+
+<plotly-plot [data]="graph.data" [layout]="graph.layout"></plotly-plot>
+

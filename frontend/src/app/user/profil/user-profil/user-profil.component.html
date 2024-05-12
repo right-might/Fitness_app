@@ -1,0 +1,116 @@
+<div class="container mt-4">
+  <div class="card">
+    <div class="card-header">
+      <h2>Profil Utilisateur</h2>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-6" *ngIf="userProfile">
+          <p>
+            <strong>Nom:</strong> {{ userProfile.firstName }}
+            {{ userProfile.lastName }}
+          </p>
+          <p><strong>Nom d'utilisateur:</strong> {{ userProfile.username }}</p>
+          <p><strong>Email:</strong> {{ userProfile.email }}</p>
+          <p><strong>Rôle:</strong> {{ userProfile.role }}</p>
+          <p
+            *ngIf="
+              userProfile.role === 'CLIENT' && !userProfile.trainerUsername
+            "
+          >
+            <strong>Mon entraîneur:</strong> Vous n'avez aucun entraîneur
+          </p>
+          <p
+            *ngIf="userProfile.role === 'CLIENT' && userProfile.trainerUsername"
+          >
+            <strong>Mon entraîneur:</strong> {{ userProfile.trainerUsername }}
+          </p>
+
+          <div class="row mt-3">
+            <ng-container *ngIf="userProfile.role === 'USER'">
+              <!-- Boutons pour le client -->
+              <div class="col-12 mb-2">
+                <button
+                  class="btn btn-success btn-block"
+                  (click)="onFindTrainer()"
+                >
+                  Trouver un Entraîneur
+                </button>
+              </div>
+              <div class="col-12 mb-2">
+                <button
+                  class="btn btn-primary btn-block"
+                  (click)="openDialog()"
+                >
+                  Devenir un Entraîneur
+                </button>
+              </div>
+              <div class="col-12 mb-2">
+                <button
+                  class="btn btn-info btn-block"
+                  (click)="onViewAppointments()"
+                >
+                  Mes Rendez-vous
+                </button>
+              </div>
+              <div class="col-12">
+                <button
+                  class="btn btn-danger btn-block"
+                  (click)="onDeleteAccount()"
+                >
+                  Supprimer mon Compte
+                </button>
+              </div>
+            </ng-container>
+
+            <ng-container *ngIf="userProfile.role === 'TRAINER'">
+              <!-- Boutons pour l'entraîneur -->
+              <div class="col-12 mb-2">
+                <button
+                  class="btn btn-info btn-block"
+                  (click)="onViewAppointments()"
+                >
+                  Mes Rendez-vous
+                </button>
+              </div> 
+              <div class="col-12 mb-2">
+                <button
+                  class="btn btn-success btn-block"
+                  (click)="onScheduleAppointments()"
+                >
+                  Planifier un Rendez-vous
+                </button>
+              </div>
+              <div class="col-12">
+                <button
+                  class="btn btn-danger btn-block"
+                  (click)="onDeleteAccount()"
+                >
+                  Supprimer mon Compte
+                </button>
+              </div>
+            </ng-container> 
+            <div class="col-12 mb-4">
+
+            <button 
+            class="btn btn-success btn-block"
+            (click)="onFindTrainer()"
+          >
+            Changer Entraîneur
+          </button>
+            </div>
+            <div class="col-12 ">
+              <button
+                class="btn btn-danger btn-block"
+                (click)="onDeleteAccount()"
+              >
+                Supprimer mon Compte
+              </button>
+            </div>
+
+          </div>  
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
